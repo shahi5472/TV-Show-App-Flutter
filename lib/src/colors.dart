@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Colors {
-  Colors._();
+class ShowColors {
+  ShowColors._();
 
   static final Color purple_200 = Color(0xFF141A31);
   static final Color purple_500 = Color(0xFF081029);
@@ -17,4 +17,5 @@ class Colors {
   static final Color colorTextSecondary = Color(0xFF141A31);
   static final Color colorTextOther = Color(0xFFFAD303);
   static final Color colorThemeExtra = Color(0xFFFF5252);
+  static final Color holo_green_light = Color(0xFF99cc00);
 }
