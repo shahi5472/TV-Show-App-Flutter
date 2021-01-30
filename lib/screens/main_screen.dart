@@ -12,7 +12,6 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    print(SizeConfig.imageSizeMultiplier * 25.5);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ShowColors.purple_500,
@@ -60,9 +59,8 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: SizeConfig.heightMultiplier * 14,
                     margin:
-                        EdgeInsets.only(top: SizeConfig.heightMultiplier * 5),
+                    EdgeInsets.only(top: SizeConfig.heightMultiplier * 5),
                     child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(4),
@@ -71,7 +69,7 @@ class _MainScreenState extends State<MainScreen> {
                       elevation: 6,
                       child: Padding(
                         padding: EdgeInsets.only(
-                            left: SizeConfig.widthMultiplier * 30),
+                            left: SizeConfig.widthMultiplier * 32),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -121,6 +119,9 @@ class _MainScreenState extends State<MainScreen> {
                                     fontWeight: FontWeight.w700),
                               ),
                             ),
+                            SizedBox(
+                              height: SizeConfig.heightMultiplier * 3.2,
+                            ),
                           ],
                         ),
                       ),
@@ -129,10 +130,10 @@ class _MainScreenState extends State<MainScreen> {
                   Container(
                     margin: EdgeInsets.only(
                       top: SizeConfig.heightMultiplier * 1.5,
-                      left: SizeConfig.widthMultiplier * 4.5,
+                      left: SizeConfig.widthMultiplier * 4.2,
                     ),
-                    height: SizeConfig.imageSizeMultiplier * 33.2,
-                    width: SizeConfig.imageSizeMultiplier * 24,
+                    height: SizeConfig.heightMultiplier * 15.8,
+                    width: SizeConfig.widthMultiplier * 25.5,
                     decoration: BoxDecoration(
                       color: ShowColors.colorPrimaryLight,
                       borderRadius: BorderRadius.circular(4),
