@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tv_show/api/Apiz.dart';
 import 'package:flutter_tv_show/models/TVShow.dart';
+import 'package:flutter_tv_show/screens/details_screen.dart';
 import 'package:flutter_tv_show/src/colors.dart';
 import 'package:flutter_tv_show/src/size_config.dart';
 import 'package:flutter_tv_show/src/strings.dart';
@@ -96,109 +97,123 @@ class _MainScreenState extends State<MainScreen> {
                   if (position == _tvShow.length) {
                     return Center(child: CircularProgressIndicator());
                   }
-                  return InkWell(
-                    onTap: () {
-
-                    },
-                    child: Stack(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.heightMultiplier * 5),
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
+                  return Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      splashColor: Colors.amber,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailsScreen(
+                              tvShow: _tvShow[position],
                             ),
-                            color: ShowColors.colorPrimaryLight,
-                            elevation: 6,
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: SizeConfig.widthMultiplier * 32),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.only(
-                                        top: SizeConfig.heightMultiplier * 1.5),
-                                    child: Text(
-                                      '${_tvShow[position].name ?? ''}',
-                                      style: TextStyle(
-                                        fontSize: SizeConfig.textMultiplier * 2,
-                                        color: ShowColors.colorTextIcons,
-                                        fontWeight: FontWeight.w900,
+                          ),
+                        );
+                      },
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.only(
+                                top: SizeConfig.heightMultiplier * 5),
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              color: ShowColors.colorPrimaryLight,
+                              elevation: 6,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: SizeConfig.widthMultiplier * 32),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                          top: SizeConfig.heightMultiplier *
+                                              1.5),
+                                      child: Text(
+                                        '${_tvShow[position].name ?? ''}',
+                                        style: TextStyle(
+                                          fontSize:
+                                              SizeConfig.textMultiplier * 2,
+                                          color: ShowColors.colorTextIcons,
+                                          fontWeight: FontWeight.w900,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        top: SizeConfig.heightMultiplier - 5),
-                                    child: Text(
-                                      '${_tvShow[position].network ?? '' + " (" + _tvShow[position].country ?? '' + ")"}',
-                                      style: TextStyle(
-                                          color: ShowColors.colorTextOther,
-                                          fontSize:
-                                              SizeConfig.textMultiplier * 1.6,
-                                          fontWeight: FontWeight.w700),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          top: SizeConfig.heightMultiplier - 5),
+                                      child: Text(
+                                        '${_tvShow[position].network ?? '' + " (" + _tvShow[position].country ?? '' + ")"}',
+                                        style: TextStyle(
+                                            color: ShowColors.colorTextOther,
+                                            fontSize:
+                                                SizeConfig.textMultiplier * 1.6,
+                                            fontWeight: FontWeight.w700),
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        top: SizeConfig.heightMultiplier - 5),
-                                    child: Text(
-                                      '${_tvShow[position].start_date ?? ''}',
-                                      style: TextStyle(
-                                          color: ShowColors.colorTextPrimary,
-                                          fontSize:
-                                              SizeConfig.textMultiplier * 1.6,
-                                          fontWeight: FontWeight.w700),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          top: SizeConfig.heightMultiplier - 5),
+                                      child: Text(
+                                        '${_tvShow[position].start_date ?? ''}',
+                                        style: TextStyle(
+                                            color: ShowColors.colorTextPrimary,
+                                            fontSize:
+                                                SizeConfig.textMultiplier * 1.6,
+                                            fontWeight: FontWeight.w700),
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        top: SizeConfig.heightMultiplier - 5),
-                                    child: Text(
-                                      '${_tvShow[position].status ?? ''}',
-                                      style: TextStyle(
-                                          color: ShowColors.holo_green_light,
-                                          fontSize:
-                                              SizeConfig.textMultiplier * 1.6,
-                                          fontWeight: FontWeight.w700),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          top: SizeConfig.heightMultiplier - 5),
+                                      child: Text(
+                                        '${_tvShow[position].status ?? ''}',
+                                        style: TextStyle(
+                                            color: ShowColors.holo_green_light,
+                                            fontSize:
+                                                SizeConfig.textMultiplier * 1.6,
+                                            fontWeight: FontWeight.w700),
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: SizeConfig.heightMultiplier * 3.2,
-                                  ),
-                                ],
+                                    SizedBox(
+                                      height: SizeConfig.heightMultiplier * 3.2,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                            top: SizeConfig.heightMultiplier * 1.5,
-                            left: SizeConfig.widthMultiplier * 4.2,
-                          ),
-                          height: SizeConfig.heightMultiplier * 15.8,
-                          width: SizeConfig.widthMultiplier * 25.5,
-                          decoration: BoxDecoration(
-                            color: ShowColors.colorPrimaryLight,
-                            borderRadius: BorderRadius.circular(4),
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                  '${_tvShow[position].image_thumbnail_path ?? ''}'),
-                              fit: BoxFit.fill,
+                          Container(
+                            margin: EdgeInsets.only(
+                              top: SizeConfig.heightMultiplier * 1.5,
+                              left: SizeConfig.widthMultiplier * 4.2,
+                            ),
+                            height: SizeConfig.heightMultiplier * 15.8,
+                            width: SizeConfig.widthMultiplier * 25.5,
+                            decoration: BoxDecoration(
+                              color: ShowColors.colorPrimaryLight,
+                              borderRadius: BorderRadius.circular(4),
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    '${_tvShow[position].image_thumbnail_path ?? ''}'),
+                                fit: BoxFit.fill,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },
               )
             : Center(
-                child: Padding(
+                child: Container(
+                  margin: EdgeInsets.all(8),
                   padding: EdgeInsets.all(8),
                   child: CircularProgressIndicator(),
                 ),
