@@ -98,8 +98,7 @@ class _MainScreenState extends State<MainScreen> {
                   }
                   return InkWell(
                     onTap: () {
-                      print(
-                          '${_tvShow[position].id} : ${_tvShow[position].name}');
+
                     },
                     child: Stack(
                       children: [
@@ -124,7 +123,7 @@ class _MainScreenState extends State<MainScreen> {
                                     padding: EdgeInsets.only(
                                         top: SizeConfig.heightMultiplier * 1.5),
                                     child: Text(
-                                      '${_tvShow[position].name}',
+                                      '${_tvShow[position].name ?? ''}',
                                       style: TextStyle(
                                         fontSize: SizeConfig.textMultiplier * 2,
                                         color: ShowColors.colorTextIcons,
@@ -136,7 +135,7 @@ class _MainScreenState extends State<MainScreen> {
                                     margin: EdgeInsets.only(
                                         top: SizeConfig.heightMultiplier - 5),
                                     child: Text(
-                                      '${_tvShow[position].network + " (" + _tvShow[position].country + ")"}',
+                                      '${_tvShow[position].network ?? '' + " (" + _tvShow[position].country ?? '' + ")"}',
                                       style: TextStyle(
                                           color: ShowColors.colorTextOther,
                                           fontSize:
@@ -148,7 +147,7 @@ class _MainScreenState extends State<MainScreen> {
                                     margin: EdgeInsets.only(
                                         top: SizeConfig.heightMultiplier - 5),
                                     child: Text(
-                                      '${_tvShow[position].start_date}',
+                                      '${_tvShow[position].start_date ?? ''}',
                                       style: TextStyle(
                                           color: ShowColors.colorTextPrimary,
                                           fontSize:
@@ -160,7 +159,7 @@ class _MainScreenState extends State<MainScreen> {
                                     margin: EdgeInsets.only(
                                         top: SizeConfig.heightMultiplier - 5),
                                     child: Text(
-                                      '${_tvShow[position].status}',
+                                      '${_tvShow[position].status ?? ''}',
                                       style: TextStyle(
                                           color: ShowColors.holo_green_light,
                                           fontSize:
@@ -188,7 +187,7 @@ class _MainScreenState extends State<MainScreen> {
                             borderRadius: BorderRadius.circular(4),
                             image: DecorationImage(
                               image: NetworkImage(
-                                  '${_tvShow[position].image_thumbnail_path}'),
+                                  '${_tvShow[position].image_thumbnail_path ?? ''}'),
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -198,7 +197,12 @@ class _MainScreenState extends State<MainScreen> {
                   );
                 },
               )
-            : Center(child: CircularProgressIndicator()),
+            : Center(
+                child: Padding(
+                  padding: EdgeInsets.all(8),
+                  child: CircularProgressIndicator(),
+                ),
+              ),
       ),
     );
   }
